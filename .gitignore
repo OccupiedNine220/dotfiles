@@ -1,0 +1,11 @@
+# Backup files
+*.bak
+*.orig
+*~
+
+# Never commit decrypted secrets or private keys
+secrets/*.dec
+secrets/*.plain
+secrets/*.yaml.decrypted
+**/*keys.txt
+**/age/keys.txt
