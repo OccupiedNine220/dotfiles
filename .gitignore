@@ -3,10 +3,8 @@
 *.orig
 *~
 
-# Never commit decrypted secrets or private keys
-secrets/*.dec
-secrets/*.plain
-secrets/*.yaml.decrypted
+# Never commit secrets of any form (even sops-encrypted)
+secrets/
 **/*keys.txt
 **/age/keys.txt
 
