@@ -16,7 +16,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -33,11 +33,11 @@
     "nvidia.NVreg_TemporaryFilePath=/var/tmp"
   ];
   hardware.nvidia = {
-    open = true;
+    open = false;
     modesetting.enable = true;
     nvidiaSettings = true;
     powerManagement.enable = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.production;
   };
   hardware.nvidia-container-toolkit.enable = true;
 
@@ -163,7 +163,7 @@
   services.gvfs.enable = true;
 
   services.dbus.enable = true;
-
+  services.netbird.enable = true;
   fileSystems."/mnt/disk1" =
     { device = "/dev/disk/by-uuid/d8619da3-b34b-4391-a7b1-479a0ade0fda";
       fsType = "ext4";

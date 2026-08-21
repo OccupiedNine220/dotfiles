@@ -4,7 +4,6 @@
 *~
 
 # Never commit secrets of any form (even sops-encrypted)
-secrets/
 .sops.yaml
 **/*keys.txt
 **/age/keys.txt
