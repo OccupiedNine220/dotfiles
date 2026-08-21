@@ -179,5 +179,11 @@
   networking.firewall.allowedTCPPorts = [ 11434 ];
 
   programs.kdeconnect.enable = true;
+  
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 5d";
+  };
 
 }
