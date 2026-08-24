@@ -151,7 +151,7 @@ in
 
     home.file.".config/Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=Tokyonight-Dark
+      theme=Kvantum-Tokyo-Night
     '';
 
   home.packages = with pkgs; [
