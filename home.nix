@@ -13,6 +13,7 @@ in
     ./fastfetch.nix
     ./mpv.nix
     ./zed.nix
+    ./nixcord.nix
     inputs.spicetify-nix.homeManagerModules.default
     inputs.caelestia-shell.homeManagerModules.default
     inputs.nixcord.homeModules.nixcord
@@ -45,16 +46,6 @@ in
     hidePodcasts
     ];
   };
-
-  # Discord Canary + Equicord + OpenAsar, управляется через Nixcord
-  programs.nixcord = {
-    enable = true;
-    discord.enable = true;
-    discord.equicord.enable = true;
-    discord.openASAR.enable = true;
-    discord.branch = "canary";
-  };
-
 
   home.stateVersion = "26.05";
 
@@ -235,6 +226,8 @@ in
     google-fonts
     mangohud
     feishin
+    tmux
+    nextcloud-client
   ] ++ [
     inputs.herdr.packages.${pkgs.system}.default
   ];

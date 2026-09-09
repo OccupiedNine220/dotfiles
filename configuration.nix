@@ -99,7 +99,7 @@
   };
 
   programs.zsh.enable = true;
-  
+
   # Define a user account.
   users.users.occupiednine220 = {
     isNormalUser = true;
@@ -179,7 +179,7 @@
   networking.firewall.allowedTCPPorts = [ 11434 ];
 
   programs.kdeconnect.enable = true;
-  
+
   nix.gc = {
     automatic = true;
     dates = "weekly";

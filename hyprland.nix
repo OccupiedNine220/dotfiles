@@ -136,13 +136,7 @@
 
       hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"), { repeating = true })
       hl.bind("XF86AudioLowerVolume", hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"), { repeating = true })
-      
-      hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"))
-      hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"))
-      hl.bind("XF86AudioNext",  hl.dsp.exec_cmd("playerctl next"))
-      hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"))
-      hl.bind("XF86AudioStop",  hl.dsp.exec_cmd("playerctl stop"))
-      
+
       hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true })
       hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
     '';
