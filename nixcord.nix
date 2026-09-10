@@ -3,6 +3,7 @@
   programs.nixcord = {
     enable = true;
     config = {
+        useQuickCss = true;
         plugins = {
             alwaysAnimate.enable = true;
             alwaysTrust.enable = true;
@@ -13,7 +14,7 @@
             };
             customTimestamps = {
               formats = {
-                enabled = false;
+                enable = false;
               };
             };
             messageLogger = {
@@ -22,27 +23,27 @@
             moreUserTags = {
               tagSettings = {
                 administrator = {
-                  enabled = false;
+                  enable = false;
                 };
                 chatModerator = {
-                  enabled = false;
+                  enable = false;
                 };
                 moderator = {
-                  enabled = false;
+                  enable = false;
                 };
                 moderatorStaff = {
-                  enabled = false;
+                  enable = false;
                 };
                 owner = {
-                  enabled = false;
+                  enable = false;
                 };
                 voiceModerator = {
-                  enabled = false;
+                  enable = false;
                 };
                 webhook = {
-                  enabled = false;
+                  enable = false;
                 };
-                enabled = false;
+                enable = false;
               };
             };
             noDevtoolsWarning.enable = true;
@@ -99,11 +100,8 @@
               target = "en";
               toki = true;
             };
-
           };
-    settings = {
-        hardwareAcceleration = true;
-      };
+    quickCss = "@import url(https://mwittrien.github.io/BetterDiscordAddons/Themes/EmojiReplace/base/Apple.css);";
     discord = {
         branches = [ "canary" ];
         equicord.enable = true;
