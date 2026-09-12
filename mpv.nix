@@ -16,7 +16,6 @@ let
       cp scripts/jellyfin.lua $out/share/mpv/scripts/
     '';
 
-    # Важно для home-manager programs.mpv.scripts
     passthru = {
       scriptName = "jellyfin.lua";
     };
@@ -61,6 +60,7 @@ in
 
     scripts = with pkgs.mpvScripts; [
       mpv-discord
+
       uosc
       thumbfast
       sponsorblock
@@ -123,6 +123,8 @@ in
       "v" = "script-binding uosc/video";
       "p" = "script-binding uosc/playlist";
       "c" = "script-binding uosc/chapters";
+      
+      "s" = "screenshot";
 
       "SPACE" = "cycle pause";
 
