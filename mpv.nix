@@ -124,7 +124,7 @@ in
       "p" = "script-binding uosc/playlist";
       "c" = "script-binding uosc/chapters";
       
-      "s" = "screenshot";
+      "S" = "screenshot";
 
       "SPACE" = "cycle pause";
 
