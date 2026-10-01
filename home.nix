@@ -102,6 +102,12 @@ in
         ps = "push";
         pl = "pull";
         f = "fetch";
+	a = "add";
+      };
+      signing = {
+        format = "ssh";
+        key = "/home/occupiednine220/.ssh/id_ed25519.pub";
+        signByDefault = true;
       };
       init.defaultBranch = "main";
     };
