@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }:
+{ config, pkgs, inputs, lib, unstable, ... }:
 
 let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -145,7 +145,10 @@ in
       theme=Kvantum-Tokyo-Night
     '';
 
-  home.packages = with pkgs; [
+  home.packages = [
+    unstable.amnezia-vpn
+    unstable.sable
+  ] ++ (with pkgs; [
     protontricks
     librewolf
     neovim
@@ -186,7 +189,6 @@ in
     pear-desktop
     material-icons
     microsoft-edge
-    amnezia-vpn
     flameshot
     wf-recorder
     gimp
@@ -230,5 +232,5 @@ in
     nextcloud-client
   ] ++ [
     inputs.herdr.packages.${pkgs.system}.default
-  ];
+  ]);
 }

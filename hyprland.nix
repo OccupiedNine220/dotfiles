@@ -80,6 +80,62 @@
       hl.animation({ leaf = "workspaces", enabled = true, speed = 6,  bezier = "overshot",  style = "slide" })
 
       hl.monitor({ output = "HDMI-A-1", mode = "1440x900@59.89", position = "0x0", scale = 1 })
+
+      -- BongoCat overlay (Unity XWayland, transparent click-through cat)
+      -- Requires Steam launch options (do NOT change global SDL_VIDEODRIVER):
+      --   SDL_VIDEODRIVER=x11 GDK_BACKEND=x11 %command% -force-x11
+      hl.window_rule({
+        name = "bongocat-overlay-class",
+        match = { class = ".*BongoCat.*", xwayland = true },
+        float = true,
+        pin = true,
+        decorate = false,
+        border_size = 0,
+        rounding = 0,
+        no_blur = true,
+        no_shadow = true,
+        no_anim = true,
+        no_dim = true,
+        focus_on_activate = false,
+        no_follow_mouse = true,
+      })
+      hl.window_rule({
+        name = "bongocat-overlay-title",
+        match = { title = ".*BongoCat.*", xwayland = true },
+        float = true,
+        pin = true,
+        decorate = false,
+        border_size = 0,
+        rounding = 0,
+        no_blur = true,
+        no_shadow = true,
+        no_anim = true,
+        no_dim = true,
+        focus_on_activate = false,
+        no_follow_mouse = true,
+      })
+
+      -- BongoCat focus toggle: no_focus is ON by default (cat never steals focus),
+      -- SUPER+G disables it and focuses the cat (for settings), repeat to lock back.
+      local bongoNoFocusClass = hl.window_rule({
+        name = "bongocat-no-focus-class",
+        match = { class = ".*BongoCat.*", xwayland = true },
+        no_focus = true,
+      })
+      local bongoNoFocusTitle = hl.window_rule({
+        name = "bongocat-no-focus-title",
+        match = { title = ".*BongoCat.*", xwayland = true },
+        no_focus = true,
+      })
+      hl.bind("SUPER + G", function()
+        local locked = bongoNoFocusClass:is_enabled()
+        bongoNoFocusClass:set_enabled(not locked)
+        bongoNoFocusTitle:set_enabled(not locked)
+        if locked then
+          hl.dispatch(hl.dsp.focus({ window = "class:BongoCat.x86_64" }))
+        end
+      end)
+
       hl.on("hyprland.start", function()
         hl.dispatch(hl.dsp.exec_cmd("caelestia shell -d"))
         hl.dispatch(hl.dsp.exec_cmd("/usr/lib/polkit-kde-authentication-agent-1"))

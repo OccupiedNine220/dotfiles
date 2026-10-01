@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     caelestia-shell = {
       url = "github:caelestia-dots/shell";
@@ -19,17 +20,24 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, spicetify-nix, sops-nix, ... } @ inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, spicetify-nix, sops-nix, ... } @ inputs: {
     nixosConfigurations.nixos =
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = { inherit inputs; unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; }; };
         modules = [
           ./configuration.nix
           home-manager.nixosModules.default
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              unstable = import nixpkgs-unstable {
+                system = "x86_64-linux";
+                config.allowUnfree = true;
+              };
+            };
             home-manager.users.occupiednine220 = import ./home.nix;
             home-manager.sharedModules = [
               sops-nix.homeManagerModules.sops

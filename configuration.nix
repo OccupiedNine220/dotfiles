@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running 'nixos-help').
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, unstable, inputs, ... }:
 
 {
   imports =
@@ -104,7 +104,7 @@
   users.users.occupiednine220 = {
     isNormalUser = true;
     description = "Kirill";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "input" ];
     packages = with pkgs; [];
     shell = pkgs.zsh;
   };
@@ -167,6 +167,7 @@
 
   services.dbus.enable = true;
   services.netbird.enable = true;
+  services.tailscale.enable = true;
   fileSystems."/mnt/disk1" =
     { device = "/dev/disk/by-uuid/d8619da3-b34b-4391-a7b1-479a0ade0fda";
       fsType = "ext4";
