@@ -1,0 +1,19 @@
+# Backup files
+*.bak
+*.orig
+*~
+
+# Never commit secrets of any form (even sops-encrypted)
+.sops.yaml
+**/*keys.txt
+**/age/keys.txt
+
+# Ignore build outputs from performing a nix-build or `nix build` command
+result
+result-*
+
+# Ignore automatically generated direnv output
+.direnv
+
+# Ignore NixOS interactive test driver history
+**/.nixos-test-history
