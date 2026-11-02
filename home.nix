@@ -235,7 +235,7 @@ in
     tmux
     nextcloud-client
   ] ++ [
-    inputs.herdr.packages.${pkgs.system}.default
-    inputs.millennium.packages."${pkgs.system}".millennium-steam
+    inputs.herdr.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.millennium.packages."${pkgs.stdenv.hostPlatform.system}".millennium-steam
   ]);
 }

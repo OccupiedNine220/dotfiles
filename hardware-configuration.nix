@@ -27,7 +27,7 @@
     };
 
   swapDevices =
-    [ { device = "/dev/mapper/luks-9ada3389-5677-442e-9813-2fd80c9a9285"; }
+    [ { device = "/dev/mapper/luks-f598a379-86e6-4493-80e0-b618a5cab18b"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";

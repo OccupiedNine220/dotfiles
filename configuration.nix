@@ -16,8 +16,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Encrypted swap: открывается кейфайлом при загрузке, без пароля
-  boot.initrd.luks.devices."luks-9ada3389-5677-442e-9813-2fd80c9a9285" = {
-    device = "/dev/disk/by-uuid/9ada3389-5677-442e-9813-2fd80c9a9285";
+  boot.initrd.luks.devices."luks-f598a379-86e6-4493-80e0-b618a5cab18b" = {
+    device = "/dev/disk/by-uuid/f598a379-86e6-4493-80e0-b618a5cab18b";
     keyFile = "/etc/nixos/secrets/swap.key";
   };
   boot.initrd.secrets."/etc/nixos/secrets/swap.key" = /etc/nixos/secrets/swap.key;

@@ -7,6 +7,7 @@
 .sops.yaml
 **/*keys.txt
 **/age/keys.txt
+secrets/
 
 # Ignore build outputs from performing a nix-build or `nix build` command
 result
