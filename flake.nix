@@ -2,6 +2,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
     caelestia-shell = {
@@ -21,11 +22,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, spicetify-nix, sops-nix, ... } @ inputs: {
+  outputs = { self, nixpkgs, nixpkgs-unstable, nixpkgs-master, home-manager, spicetify-nix, sops-nix, ... } @ inputs: {
     nixosConfigurations.nixos =
       nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit inputs; unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; }; };
+        specialArgs = {
+          inherit inputs;
+          unstable = import nixpkgs-unstable { system = "x86_64-linux"; config.allowUnfree = true; };
+          master = import nixpkgs-master { system = "x86_64-linux"; config.allowUnfree = true; };
+        };
         modules = [
           ./configuration.nix
           home-manager.nixosModules.default
@@ -35,6 +40,10 @@
             home-manager.extraSpecialArgs = {
               inherit inputs;
               unstable = import nixpkgs-unstable {
+                system = "x86_64-linux";
+                config.allowUnfree = true;
+              };
+              master = import nixpkgs-master {
                 system = "x86_64-linux";
                 config.allowUnfree = true;
               };

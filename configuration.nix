@@ -15,7 +15,6 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # Encrypted swap: открывается кейфайлом при загрузке, без пароля
   boot.initrd.luks.devices."luks-9ada3389-5677-442e-9813-2fd80c9a9285" = {
     device = "/dev/disk/by-uuid/9ada3389-5677-442e-9813-2fd80c9a9285";
     keyFile = "/etc/nixos/secrets/swap.key";
@@ -23,7 +22,7 @@
   boot.initrd.secrets."/etc/nixos/secrets/swap.key" = /etc/nixos/secrets/swap.key;
 
   # Use latest kernel.
-  boot.kernelPackages = pkgs.linuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 

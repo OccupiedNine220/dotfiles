@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, unstable, ... }:
+{ config, pkgs, inputs, lib, unstable, master, ... }:
 
 let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.hostPlatform.system};
@@ -154,6 +154,7 @@ in
   home.packages = [
     unstable.amnezia-vpn
     unstable.sable
+    master.fluxer-canary-bin
   ] ++ (with pkgs; [
     protontricks
     librewolf
